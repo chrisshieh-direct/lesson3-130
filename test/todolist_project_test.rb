@@ -3,6 +3,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use!
 require 'date'
+require 'stamp'
 
 require_relative '../lib/todolist_project'
 
@@ -167,6 +168,6 @@ class TodoListTest < MiniTest::Test
     due_date = Date.today + 3
     @todo2.due_date = due_date
     assert_equal(due_date, @todo2.due_date)
-    assert_equal("[ ] Clean room (Due: Sunday January 8)", @todo2.to_s)
+    assert_equal("[ ] Clean room#{(Date.today + 3).stamp(' (Due: Friday January 6)')}", @todo2.to_s)
   end
 end
